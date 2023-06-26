@@ -47,6 +47,10 @@ int _printf(const char *format, ...)
 					putchar_dec(va_arg(args, int), &len);
 					break;
 
+				case 'b':
+					conv_binary(va_arg(args, unsigned), &len);
+					break;
+
 				default:
 					_putchar(format[i]);
 					len++;
