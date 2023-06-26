@@ -8,3 +8,4 @@ int _putchar(char c);
 int _printf(const char *format, ...);
 void putchar_dec(int num, int *len);
 
+#endif /* MAIN_H */
