@@ -59,6 +59,14 @@ int _printf(const char *format, ...)
 					putchar_oct(va_arg(args, unsigned), &len);
 					break;
 
+				case 'x':
+					small_hex(va_arg(args, unsigned), &len);
+					break;
+
+				case 'X':
+					big_hex(va_arg(args, unsigned), &len);
+					break;
+
 				default:
 					_putchar(format[i]);
 					len++;
