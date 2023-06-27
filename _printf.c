@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * _printf - This function is similar to the standard printf.
@@ -29,54 +30,54 @@ int _printf(const char *format, ...)
 		{
 			switch (format[++i])
 			{
-				case 'c':
+			case 'c':
+				len++;
+				_putchar(va_arg(args, int));
+				break;
+
+			case 's':
+				for (s_var = va_arg(args, char *); *s_var; s_var++)
+				{
+					_putchar(*s_var);
 					len++;
-					_putchar(va_arg(args, int));
-					break;
+				}
+				break;
 
-				case 's':
-					for (s_var = va_arg(args, char*); *s_var; s_var++)
-					{
-						_putchar(*s_var);
-						len++;
-					}
-					break;
+			case 'i':
+			case 'd':
+				putchar_dec(va_arg(args, int), &len);
+				break;
 
-				case 'i':
-				case 'd':
-					putchar_dec(va_arg(args, int), &len);
-					break;
+			case 'b':
+				conv_binary(va_arg(args, unsigned), &len);
+				break;
 
-				case 'b':
-					conv_binary(va_arg(args, unsigned), &len);
-					break;
+			case 'u':
+				putchar_uns(va_arg(args, unsigned), &len);
+				break;
 
-				case 'u':
-					putchar_uns(va_arg(args, unsigned), &len);
-					break;
+			case 'o':
+				putchar_oct(va_arg(args, unsigned), &len);
+				break;
 
-				case 'o':
-					putchar_oct(va_arg(args, unsigned), &len);
-					break;
+			case 'x':
+				small_hex(va_arg(args, unsigned), &len);
+				break;
 
-				case 'x':
-					small_hex(va_arg(args, unsigned), &len);
-					break;
+			case 'X':
+				big_hex(va_arg(args, unsigned), &len);
+				break;
 
-				case 'X':
-					big_hex(va_arg(args, unsigned), &len);
-					break;
-
-				default:
-					if (format[i] == '\0')
-						goto end;
-					_putchar(format[i]);
-					len++;
-					break;
+			default:
+				if (format[i] == '\0')
+					goto end;
+				_putchar(format[i]);
+				len++;
+				break;
 			}
 		}
 	}
-	end:
+end:
 	va_end(args);
 	return (len);
 }
