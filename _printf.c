@@ -68,12 +68,15 @@ int _printf(const char *format, ...)
 					break;
 
 				default:
+					if (format[i] == '\0')
+						goto end;
 					_putchar(format[i]);
 					len++;
 					break;
 			}
 		}
 	}
+	end:
 	va_end(args);
 	return (len);
 }
