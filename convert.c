@@ -41,7 +41,7 @@ void putchar_dec(int num, int *len)
 
 /**
  * putchar_uns - output unsigned int using putchar
- * @num: unsigned
+ * @num: unsigned int
  * @len: pointer to int
  *
  * Return: none.
@@ -53,5 +53,22 @@ void putchar_uns(unsigned int num, int *len)
 		putchar_dec(num / 10, len);
 
 	_putchar(num % 10 + '0');
+	*len += 1;
+}
+
+/**
+ * putchar_oct - convert unsigned int to octal.
+ * @num: unsigned int
+ * @len: pointer to int
+ *
+ * Return: none.
+ */
+
+void putchar_oct(unsigned int num, int *len)
+{
+	if (num > 7)
+		putchar_oct(num / 8, len);
+
+	putchar(num % 8 + '0');
 	*len += 1;
 }
