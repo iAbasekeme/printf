@@ -55,6 +55,10 @@ int _printf(const char *format, ...)
 					putchar_uns(va_arg(args, unsigned), &len);
 					break;
 
+				case 'o':
+					putchar_oct(va_arg(args, unsigned), &len);
+					break;
+
 				default:
 					_putchar(format[i]);
 					len++;

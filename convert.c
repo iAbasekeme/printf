@@ -69,6 +69,6 @@ void putchar_oct(unsigned int num, int *len)
 	if (num > 7)
 		putchar_oct(num / 8, len);
 
-	putchar(num % 8 + '0');
+	_putchar(num % 8 + '0');
 	*len += 1;
 }
