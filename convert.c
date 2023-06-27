@@ -38,3 +38,25 @@ void putchar_dec(int num, int *len)
     _putchar(num % 10 + '0');
     *len += 1;
 }
+
+/**
+ * putchar_uns - output unsigned int using putchar
+ * @num: unsigned
+ * @len: pointer to int
+ *
+ * Return: none.
+ */
+
+void putchar_uns(unsigned int num, int *len)
+{
+	if (num < 0) {
+		putchar('-');
+		*len += 1;
+		num = -num;
+	}
+	if (num > 9)
+		putchar_dec(num / 10, len);
+
+	putchar(num % 10 + '0');
+	*len += 1;
+}
