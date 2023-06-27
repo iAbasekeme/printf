@@ -27,16 +27,17 @@ void conv_binary(unsigned int n, int *len)
 
 void putchar_dec(int num, int *len)
 {
-    if (num < 0) {
-        _putchar('-');
-        *len += 1;
-        num = -num;
-    }
-    if (num > 9)
-        putchar_dec(num / 10, len);
+	if (num < 0)
+	{
+		_putchar('-');
+		*len += 1;
+		num = -num;
+	}
+	if (num > 9)
+		putchar_dec(num / 10, len);
 
-    _putchar(num % 10 + '0');
-    *len += 1;
+	_putchar(num % 10 + '0');
+	*len += 1;
 }
 
 /**
@@ -86,15 +87,15 @@ void small_hex(unsigned int num, int *len)
 	if (num > 15)
 		small_hex(num / 16, len);
 
-    num = num % 16;
-    if (num > 9 && num <= 15)
+	num = num % 16;
+	if (num > 9 && num <= 15)
 	{
-	    _putchar(num % 10 + 97);
+		_putchar(num % 10 + 97);
 		*len += 1;
 	}
-    else
+	else
 	{
-	    _putchar(num + '0');
+		_putchar(num + '0');
 		*len += 1;
 	}
 }
@@ -112,15 +113,54 @@ void big_hex(unsigned int num, int *len)
 	if (num > 15)
 		big_hex(num / 16, len);
 
-    num = num % 16;
-    if (num > 9 && num <= 15)
+	num = num % 16;
+	if (num > 9 && num <= 15)
 	{
-	    _putchar(num % 10 + 65);
+		_putchar(num % 10 + 65);
 		*len += 1;
 	}
-    else
+	else
 	{
-	    _putchar(num + '0');
+		_putchar(num + '0');
 		*len += 1;
+	}
+}
+/**
+ * charToHex - A function that converts a char to hexadecimal
+ * @c: character to be converted
+ *
+ * Return: nothing
+ */
+
+void charToHex(char c)
+{
+	unsigned char i = (unsigned char)c;
+	unsigned char upper = (i >> 4) & 0xF;
+	unsigned char lower = i & 0xF;
+	unsigned char hexupper = (upper < 10) ? '0' + upper : 'A' + (upper - 10);
+	unsigned char hexlower = (lower < 10) ? '0' + lower : 'A' + (lower - 10);
+	_putchar(hexupper);
+	_putchar(hexlower);
+}
+/**
+ * printString - a functio that prints a string
+ * @str: character to be printed
+ *
+ * Return: nothing
+ */
+
+void printString(const char *str)
+{
+	while (*str)
+	{
+		if (*str < 32 || *str >= 127)
+		{
+			charToHex(*str);
+		}
+		else
+		{
+			_putchar(*str);
+		}
+		str++;
 	}
 }
