@@ -68,6 +68,10 @@ int _printf(const char *format, ...)
 				big_hex(va_arg(args, unsigned), &len);
 				break;
 
+			case 'S':
+				printString(va_arg(args, int));
+				break;
+
 			default:
 				if (format[i] == '\0')
 					goto end;
