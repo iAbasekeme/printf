@@ -49,14 +49,9 @@ void putchar_dec(int num, int *len)
 
 void putchar_uns(unsigned int num, int *len)
 {
-	if (num < 0) {
-		putchar('-');
-		*len += 1;
-		num = -num;
-	}
 	if (num > 9)
 		putchar_dec(num / 10, len);
 
-	putchar(num % 10 + '0');
+	_putchar(num % 10 + '0');
 	*len += 1;
 }
