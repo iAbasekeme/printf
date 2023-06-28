@@ -12,5 +12,7 @@ void putchar_uns(unsigned int num, int *len);
 void putchar_oct(unsigned int num, int *len);
 void small_hex(unsigned int num, int *len);
 void big_hex(unsigned int num, int *len);
+void printString(const char *str, int *len);
+void charToHex(char c);
 
 #endif /* MAIN_H */
