@@ -30,54 +30,67 @@ int _printf(const char *format, ...)
 		{
 			switch (format[++i])
 			{
-			case 'c':
-				len++;
-				_putchar(va_arg(args, int));
-				break;
-
-			case 's':
-				for (s_var = va_arg(args, char *); *s_var; s_var++)
-				{
-					_putchar(*s_var);
+				case 'c':
 					len++;
-				}
-				break;
+					_putchar(va_arg(args, int));
+					break;
 
-			case 'i':
-			case 'd':
-				putchar_dec(va_arg(args, int), &len);
-				break;
+				case 's':
+					s_var = va_arg(args, char*);
+					if (s_var != NULL)
+					{
+						for (; *s_var; s_var++)
+						{
+							putchar(*s_var);
+							len++;
+						}
+					}
+					else
+					{
+						for (s_var = "(null)"; *s_var; s_var++)
+						{
+							putchar(*s_var);
+							len++;
+						}
+					}
+					break;
 
-			case 'b':
-				conv_binary(va_arg(args, unsigned), &len);
-				break;
+				case 'i':
+				case 'd':
+					putchar_dec(va_arg(args, int), &len);
+					break;
 
-			case 'u':
-				putchar_uns(va_arg(args, unsigned), &len);
-				break;
+				case 'b':
+					conv_binary(va_arg(args, unsigned), &len);
+					break;
 
-			case 'o':
-				putchar_oct(va_arg(args, unsigned), &len);
-				break;
+				case 'u':
+					putchar_uns(va_arg(args, unsigned), &len);
+					break;
 
-			case 'x':
-				small_hex(va_arg(args, unsigned), &len);
-				break;
+				case 'o':
+					putchar_oct(va_arg(args, unsigned), &len);
+					break;
 
-			case 'X':
-				big_hex(va_arg(args, unsigned), &len);
-				break;
+				case 'x':
+					small_hex(va_arg(args, unsigned), &len);
+					break;
 
-			default:
-				if (format[i] == '\0')
-					goto end;
-				_putchar(format[i]);
-				len++;
-				break;
+				case 'X':
+					big_hex(va_arg(args, unsigned), &len);
+					break;
+
+				default:
+					if (format[i] == '\0')
+						goto end;
+					_putchar('%');
+					_putchar(format[i]);
+					len++;
+					break;
 			}
 		}
 	}
-end:
+	end:
 	va_end(args);
 	return (len);
 }
