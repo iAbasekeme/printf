@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#define BUF_SIZE 1024
+#define BUF_SIZ 1024
 
 /**
  * buffer_write - A function used accumulate data in a
