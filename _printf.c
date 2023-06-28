@@ -28,6 +28,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
+			start:
 			switch (format[++i])
 			{
 				case 'c':
@@ -62,6 +63,11 @@ int _printf(const char *format, ...)
 				case '%':
 					_putchar('%');
 					len++;
+					break;
+
+				case 'l':
+				case 'h':
+					goto start;
 					break;
 
 				case 'i':
