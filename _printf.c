@@ -90,7 +90,7 @@ int _printf(const char *format, ...)
 						goto end;
 					_putchar(format[i-1]);
 					_putchar(format[i]);
-					len++;
+					len += 2;
 					break;
 			}
 		}
