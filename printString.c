@@ -14,6 +14,8 @@ void charToHex(char c)
 	unsigned char lower = i & 0xF;
 	unsigned char hexupper = (upper < 10) ? '0' + upper : 'A' + (upper - 10);
 	unsigned char hexlower = (lower < 10) ? '0' + lower : 'A' + (lower - 10);
+	putchar(92);
+	putchar('x');
 	_putchar(hexupper);
 	_putchar(hexlower);
 }
@@ -32,7 +34,7 @@ void printString(const char *str, int *len)
 		if (*str < 32 || *str >= 127)
 		{
 			charToHex(*str);
-			*len += 1;
+			*len += 4;
 		}
 		else
 		{
