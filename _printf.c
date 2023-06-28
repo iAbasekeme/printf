@@ -83,7 +83,7 @@ int _printf(const char *format, ...)
 				default:
 					if (format[i] == '\0')
 						goto end;
-					_putchar('%');
+					_putchar(format[i - 1]);
 					_putchar(format[i]);
 					len++;
 					break;
