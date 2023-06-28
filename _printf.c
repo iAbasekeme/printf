@@ -31,17 +31,17 @@ int _printf(const char *format, ...)
 			switch (format[++i])
 			{
 				case 'c':
-					len++;
+					len ++;
 					_putchar(va_arg(args, int));
 					break;
-
+				
 				case 's':
 					s_var = va_arg(args, char*);
 					if (s_var != NULL)
 					{
 						for (; *s_var; s_var++)
 						{
-							putchar(*s_var);
+							_putchar(*s_var);
 							len++;
 						}
 					}
@@ -49,7 +49,7 @@ int _printf(const char *format, ...)
 					{
 						for (s_var = "(null)"; *s_var; s_var++)
 						{
-							putchar(*s_var);
+							_putchar(*s_var);
 							len++;
 						}
 					}
@@ -58,10 +58,6 @@ int _printf(const char *format, ...)
 				case 'i':
 				case 'd':
 					putchar_dec(va_arg(args, int), &len);
-					break;
-
-				case 'b':
-					conv_binary(va_arg(args, unsigned), &len);
 					break;
 
 				case 'u':
@@ -80,17 +76,21 @@ int _printf(const char *format, ...)
 					big_hex(va_arg(args, unsigned), &len);
 					break;
 
+				case 'b':
+					conv_binary(va_arg(args, unsigned), &len);
+					break;
+
 				default:
 					if (format[i] == '\0')
 						goto end;
-					_putchar(format[i - 1]);
+					_putchar(format[i-1]);
 					_putchar(format[i]);
 					len++;
 					break;
 			}
 		}
-	}
-	end:
-	va_end(args);
-	return (len);
+   }
+   end:
+   va_end(args);
+   return (len);
 }
