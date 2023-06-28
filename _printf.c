@@ -68,7 +68,6 @@ int _printf(const char *format, ...)
 				case 'l':
 				case 'h':
 					goto start;
-					break;
 
 				case 'i':
 				case 'd':
@@ -104,7 +103,6 @@ int _printf(const char *format, ...)
 					_putchar(format[i-1]);
 					_putchar(format[i]);
 					len += 2;
-					break;
 			}
 
 		}
