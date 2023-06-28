@@ -55,6 +55,11 @@ int _printf(const char *format, ...)
 					}
 					break;
 
+				case '%':
+					_putchar('%');
+					len++;
+					break;
+
 				case 'i':
 				case 'd':
 					putchar_dec(va_arg(args, int), &len);
