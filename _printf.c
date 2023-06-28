@@ -87,12 +87,16 @@ int _printf(const char *format, ...)
 
 				default:
 					if (format[i] == '\0')
+					{
+						len++;
 						goto end;
+					}
 					_putchar(format[i-1]);
 					_putchar(format[i]);
 					len += 2;
 					break;
 			}
+
 		}
    }
    end:
