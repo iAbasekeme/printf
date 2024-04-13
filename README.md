@@ -3,4 +3,4 @@ This is the first Group project on ALX Software Engineering program. This projec
 
 ## Contributors
 * Otti, Benson Chinedu [Github](https://github.com/BenSanti)
-* Iabas Etim [Github](https://github.com/iAbasekeme)
+* iAbas Etim [Github](https://github.com/iAbasekeme)
